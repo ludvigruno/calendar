@@ -1,0 +1,22 @@
+import React from "react";
+import { EventAction, EventActionsEnum, EventState } from "./types";
+
+const initialState: EventState = {
+  guests: [],
+  events: [],
+};
+
+export default function event(
+  state = initialState,
+  action: EventAction
+): EventState {
+  switch (action.type) {
+    case EventActionsEnum.SET_EVENTS:
+      return { ...state, events: action.payload };
+    case EventActionsEnum.SET_GUESTS:
+      return { ...state, guests: action.payload };
+
+    default:
+      return state;
+  }
+}
